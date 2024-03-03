@@ -53,12 +53,16 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 });
 
+app.get((req, res) => {
+  res.json("Hello world");
+});
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mqefz.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
   )
   .then(() => {
     app.listen(5000);
+    console.log("hello");
   })
   .catch((err) => {
     console.log(err);
