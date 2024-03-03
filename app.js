@@ -4,12 +4,21 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
 const HttpError = require("./models/http-error");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
 
 app.use(bodyParser.json());
 
@@ -52,7 +61,7 @@ mongoose
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.mqefz.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
   )
   .then(() => {
-    app.listen(5000);
+    app.listen(process.env.PORT || 5000);
   })
   .catch((err) => {
     console.log(err);
