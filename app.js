@@ -11,6 +11,12 @@ const HttpError = require("./models/http-error");
 
 const app = express();
 
+app.use(cors({
+  origin: ["https://deploy-mern-1whq.vercel.app"],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
