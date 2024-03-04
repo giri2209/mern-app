@@ -9,11 +9,12 @@ const cors = require("cors");
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
 const HttpError = require("./models/http-error");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
 
+console.log(process.env.NODE_ENV);
 app.use(
   cors({
     origin: ["https://deploy-mern-1whq.vercel.app"],
