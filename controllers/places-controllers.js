@@ -78,7 +78,7 @@ const createPlace = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-  console.log(coordinates);
+  //console.log(req);
   const createdPlace = new Place({
     title,
     description,
