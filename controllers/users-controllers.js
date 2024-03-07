@@ -58,7 +58,7 @@ const signup = async (req, res, next) => {
     );
     return next(error);
   }
-
+  console.log(req);
   const createdUser = new User({
     name,
     email,

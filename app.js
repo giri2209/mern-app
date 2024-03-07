@@ -15,10 +15,10 @@ dotenv.config();
 const app = express();
 
 app.use(bodyParser.json());
-
+const node_url = process.env.NODE_APP_ASSET_URL || "";
 app.use(
   "/uploads/images",
-  express.static(path.join(__dirname, "uploads", "images"))
+  express.static(path.join(node_url, "uploads", "images"))
 );
 
 app.use((req, res, next) => {
